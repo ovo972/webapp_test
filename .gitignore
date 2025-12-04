@@ -1,0 +1,13 @@
+.vscode
+
+.venv
+secrets/
+.env
+
+deploy_key*
+
+.acme
+acme.json
+letsencrypt
+
+__pycache__
