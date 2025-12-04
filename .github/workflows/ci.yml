@@ -6,9 +6,9 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        stack: [api, web_app]
+    # strategy:
+    #   matrix:
+    #     stack: [api, web_app]
     steps:
       - uses: actions/checkout@v4
 
@@ -18,22 +18,22 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        working-directory: ${{ matrix.stack }}
+        # working-directory: ${{ matrix.stack }}
         run: |
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           pip install ruff pytest
 
       - name: Run Ruff
-        working-directory: ${{ matrix.stack }}
+        # working-directory: ${{ matrix.stack }}
         run: ruff check .
 
       - name: Run tests
-        working-directory: ${{ matrix.stack }}
+        # working-directory: ${{ matrix.stack }}
         run: pytest
         env:
-          PYTHONPATH: ${{ github.workspace }}/${{ matrix.stack }}
-          # PYTHONPATH: ${{ github.workspace }}
+          # PYTHONPATH: ${{ github.workspace }}/${{ matrix.stack }}
+          PYTHONPATH: ${{ github.workspace }}
   build:
       needs: test
       runs-on: ubuntu-latest
