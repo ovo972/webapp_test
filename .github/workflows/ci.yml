@@ -32,8 +32,8 @@ jobs:
         # working-directory: ${{ matrix.stack }}
         run: pytest
         env:
-          PYTHONPATH: ${{ github.workspace }}/${{ matrix.stack }}
-          # PYTHONPATH: ${{ github.workspace }}
+          # PYTHONPATH: ${{ github.workspace }}/${{ matrix.stack }}
+          PYTHONPATH: ${{ github.workspace }}
   build:
       needs: test
       runs-on: ubuntu-latest
