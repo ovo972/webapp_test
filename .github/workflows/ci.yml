@@ -81,7 +81,7 @@ jobs:
       - name: Create SSH key
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.VPS_DEPLOY_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          echo "${{ secrets.DEPLOY_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.VPS_HOST }} >> ~/.ssh/known_hosts
 
@@ -109,4 +109,3 @@ jobs:
       - name: Cleanup SSH key
         run: rm -rf ~/.ssh
         if: always()
-
